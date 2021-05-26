@@ -4,7 +4,7 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // memberitahukan jika ada perubahan di firebase
-    FirebaseUser firebaseUser = Provider.of<FirebaseUser>(context);
+    auth.User firebaseUser = Provider.of<auth.User>(context);
 
     if (firebaseUser == null) {
       // lempar ke login

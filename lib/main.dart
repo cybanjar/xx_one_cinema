@@ -7,10 +7,14 @@ import 'package:xx_one_cinema/bloc/page_bloc.dart';
 import 'package:xx_one_cinema/bloc/theme_bloc.dart';
 import 'package:xx_one_cinema/services/services.dart';
 import 'package:xx_one_cinema/ui/pages/pages.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'bloc/user_bloc.dart';
+import 'ui/pages/pages.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

@@ -28,7 +28,7 @@ class _MainPageState extends State<MainPage> {
       body: Stack(
         children: [
           Container(
-            color: accentColor1,
+            color: mainColor,
           ),
           SafeArea(
               child: Container(

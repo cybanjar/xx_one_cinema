@@ -2,12 +2,12 @@ part of 'services.dart';
 
 class CinemaTransactionServices {
   static CollectionReference transactionCollection =
-      Firestore.instance.collection('transactions');
+      FirebaseFirestore.instance.collection('transactions');
 
   // save transaction
   static Future<void> saveTransaction(
       CinemaTransaction cinemaTransaction) async {
-    await transactionCollection.document().setData({
+    await transactionCollection.doc().set({
       'userID': cinemaTransaction.userID,
       'title': cinemaTransaction.title,
       'subtitle': cinemaTransaction.subtitle,
@@ -20,19 +20,19 @@ class CinemaTransactionServices {
   // get transaction
   static Future<List<CinemaTransaction>> getTransaction(String userID) async {
     // ambil document
-    QuerySnapshot snapshot = await transactionCollection.getDocuments();
+    QuerySnapshot snapshot = await transactionCollection.get();
 
-    var documents = snapshot.documents
-        .where((document) => document.data['userID'] == userID);
+    var documents =
+        snapshot.docs.where((document) => document.data()['userID'] == userID);
 
     return documents
         .map((e) => CinemaTransaction(
-            userID: e.data['userID'],
-            title: e.data['title'],
-            subtitle: e.data['subtitle'],
-            time: DateTime.fromMillisecondsSinceEpoch(e.data['time']),
-            amount: e.data['amount'],
-            picture: e.data['picture']))
+            userID: e.data()['userID'],
+            title: e.data()['title'],
+            subtitle: e.data()['subtitle'],
+            time: DateTime.fromMillisecondsSinceEpoch(e.data()['time']),
+            amount: e.data()['amount'],
+            picture: e.data()['picture']))
         .toList();
   }
 }

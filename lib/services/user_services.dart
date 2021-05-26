@@ -3,10 +3,10 @@ part of 'services.dart';
 class UserServices {
   // datanya ada di cloud firestore users
   static CollectionReference _userCollection =
-      Firestore.instance.collection('users');
+      FirebaseFirestore.instance.collection('users');
 
   static Future<void> updateUser(User user) async {
-    _userCollection.document(user.id).setData({
+    _userCollection.doc(user.id).set({
       'email': user.email,
       'name': user.name,
       'balance': user.balance,
@@ -18,15 +18,15 @@ class UserServices {
 
   // ambil user untuk auth
   static Future<User> getUser(String id) async {
-    DocumentSnapshot snapshot = await _userCollection.document(id).get();
+    DocumentSnapshot snapshot = await _userCollection.doc(id).get();
 
-    return User(id, snapshot.data['email'],
-        balance: snapshot.data['balance'],
-        profilePicture: snapshot.data['profilePicture'],
-        selectedGenres: (snapshot.data['selectedGenres'] as List)
+    return User(id, snapshot.data()['email'],
+        balance: snapshot.data()['balance'],
+        profilePicture: snapshot.data()['profilePicture'],
+        selectedGenres: (snapshot.data()['selectedGenres'] as List)
             .map((e) => e.toString())
             .toList(),
-        selectedLanguage: snapshot.data['selectedLanguage'],
-        name: snapshot.data['name']);
+        selectedLanguage: snapshot.data()['selectedLanguage'],
+        name: snapshot.data()['name']);
   }
 }

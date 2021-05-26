@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:xx_one_cinema/models/models.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:xx_one_cinema/extensions/extensions.dart';
 import 'package:http/http.dart' as http;
 import 'package:xx_one_cinema/shared/shared.dart';

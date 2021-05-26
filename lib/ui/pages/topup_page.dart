@@ -20,7 +20,7 @@ class _TopupPageState extends State<TopupPage> {
 
     return WillPopScope(
       onWillPop: () async {
-        context.bloc<PageBloc>().add(widget.pageEvent);
+        context.watch<PageBloc>().add(widget.pageEvent);
 
         return;
       },
@@ -34,7 +34,7 @@ class _TopupPageState extends State<TopupPage> {
                   margin: EdgeInsets.only(top: 20, left: defaultMargin),
                   child: GestureDetector(
                     onTap: () {
-                      context.bloc<PageBloc>().add(widget.pageEvent);
+                      context.watch<PageBloc>().add(widget.pageEvent);
                     },
                     child: Icon(Icons.chevron_left, color: Colors.black),
                   ),
@@ -156,7 +156,7 @@ class _TopupPageState extends State<TopupPage> {
                               color: mainColor,
                               onPressed: (selectedAmount > 0)
                                   ? () {
-                                      context.bloc<PageBloc>().add(GoToSuccessPage(
+                                      context.read<PageBloc>().add(GoToSuccessPage(
                                           null,
                                           CinemaTransaction(
                                               userID: (userState as UserLoaded)

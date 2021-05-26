@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:xx_one_cinema/models/models.dart';
 import 'package:xx_one_cinema/services/services.dart';
 

@@ -9,9 +9,9 @@ part 'movie_event.dart';
 part 'movie_state.dart';
 
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
-  // MovieBloc() : super(MovieInitial());
-  @override
-  MovieState get initialState => MovieInitial();
+  MovieBloc() : super(MovieInitial());
+  // @override
+  // MovieState get initialState => MovieInitial();
 
   @override
   Stream<MovieState> mapEventToState(
